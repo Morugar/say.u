@@ -1,0 +1,321 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1
+-- Dumped by pg_dump version 14.1
+
+-- Started on 2022-04-05 14:05:26
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 3338 (class 1262 OID 16384)
+-- Name: sayu; Type: DATABASE; Schema: -; Owner: postgres
+--
+
+CREATE DATABASE sayu WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'ru';
+
+
+ALTER DATABASE sayu OWNER TO postgres;
+
+\connect sayu
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4 (class 2615 OID 16386)
+-- Name: main; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA main;
+
+
+ALTER SCHEMA main OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 214 (class 1259 OID 16415)
+-- Name: chats; Type: TABLE; Schema: main; Owner: postgres
+--
+
+CREATE TABLE main.chats (
+    id1 integer,
+    id2 integer,
+    location character varying(10000)
+);
+
+
+ALTER TABLE main.chats OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16430)
+-- Name: shared; Type: TABLE; Schema: main; Owner: postgres
+--
+
+CREATE TABLE main.shared (
+    id_owner integer,
+    id_shared integer,
+    field character varying(1000)
+);
+
+
+ALTER TABLE main.shared OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 16407)
+-- Name: users; Type: TABLE; Schema: main; Owner: postgres
+--
+
+CREATE TABLE main.users (
+    id integer NOT NULL,
+    name character varying(100),
+    login character varying(30),
+    password character varying(30),
+    seed character varying(200),
+    token character varying(100) NOT NULL,
+    email character varying(100),
+    social character varying(100),
+    location character varying(100),
+    birthday date,
+    hobby character varying(100),
+    career character varying(100),
+    education character varying(100),
+    cigaretes character varying(100),
+    alcohol character varying(100),
+    musics character varying(100),
+    films character varying(100),
+    serials character varying(100),
+    books character varying(100)
+);
+
+
+ALTER TABLE main.users OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 16406)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: main; Owner: postgres
+--
+
+CREATE SEQUENCE main.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE main.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3339 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: main; Owner: postgres
+--
+
+ALTER SEQUENCE main.users_id_seq OWNED BY main.users.id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 16398)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    name character varying(100),
+    login character varying(30),
+    password character varying(30),
+    seed character varying(200),
+    token character varying(100) NOT NULL,
+    email character varying(100),
+    social character varying(100),
+    location character varying(100),
+    birthday date,
+    hobby character varying(100),
+    career character varying(100),
+    education character varying(100),
+    cigaretes character varying(100),
+    alcohol character varying(100),
+    musics character varying(100),
+    films character varying(100),
+    serials character varying(100),
+    books character varying(100)
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16397)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3340 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- TOC entry 3179 (class 2604 OID 16410)
+-- Name: users id; Type: DEFAULT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.users ALTER COLUMN id SET DEFAULT nextval('main.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3178 (class 2604 OID 16401)
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3331 (class 0 OID 16415)
+-- Dependencies: 214
+-- Data for Name: chats; Type: TABLE DATA; Schema: main; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3332 (class 0 OID 16430)
+-- Dependencies: 215
+-- Data for Name: shared; Type: TABLE DATA; Schema: main; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3330 (class 0 OID 16407)
+-- Dependencies: 213
+-- Data for Name: users; Type: TABLE DATA; Schema: main; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3328 (class 0 OID 16398)
+-- Dependencies: 211
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3341 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: main; Owner: postgres
+--
+
+SELECT pg_catalog.setval('main.users_id_seq', 1, false);
+
+
+--
+-- TOC entry 3342 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+
+
+--
+-- TOC entry 3183 (class 2606 OID 16414)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3181 (class 2606 OID 16405)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3184 (class 2606 OID 16420)
+-- Name: chats chats_id1_fkey; Type: FK CONSTRAINT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.chats
+    ADD CONSTRAINT chats_id1_fkey FOREIGN KEY (id1) REFERENCES public.users(id);
+
+
+--
+-- TOC entry 3185 (class 2606 OID 16425)
+-- Name: chats chats_id2_fkey; Type: FK CONSTRAINT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.chats
+    ADD CONSTRAINT chats_id2_fkey FOREIGN KEY (id2) REFERENCES public.users(id);
+
+
+--
+-- TOC entry 3186 (class 2606 OID 16435)
+-- Name: shared shared_id_owner_fkey; Type: FK CONSTRAINT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.shared
+    ADD CONSTRAINT shared_id_owner_fkey FOREIGN KEY (id_owner) REFERENCES public.users(id);
+
+
+--
+-- TOC entry 3187 (class 2606 OID 16440)
+-- Name: shared shared_id_shared_fkey; Type: FK CONSTRAINT; Schema: main; Owner: postgres
+--
+
+ALTER TABLE ONLY main.shared
+    ADD CONSTRAINT shared_id_shared_fkey FOREIGN KEY (id_shared) REFERENCES public.users(id);
+
+
+-- Completed on 2022-04-05 14:05:26
+
+--
+-- PostgreSQL database dump complete
+--
+
