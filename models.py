@@ -1,8 +1,8 @@
+import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, VARCHAR, String, ForeignKey, PrimaryKeyConstraint
 from peewee import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session
-from sqlalchemy.exc.declarative import declaratuive_base
 
 from config import DATABASE_URL
 
@@ -16,37 +16,41 @@ def connect_db():
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    login = Column(String)
-    password = Column(String)
-    token = Column(String)
-    email = Column(String)
-    social = Column(String)
-    location = Column(String)
-    age = Column(Integer)
-    hobby = Column(String)
-    career = Column(String)
-    education = Column(String)
-    cigaretes = Column(String)
-    alcohol = Column(String)
-    music = Column(String)
-    films = Column(String)
-    videogames = Column(String)
-    serials = Column(String)
-    books = Column(String)
-    avatar = Column(String)
+    id = sqlalchemy.Column(Integer, primary_key=True)
+    name = sqlalchemy.Column(String)
+    login = sqlalchemy.Column(String)
+    password = sqlalchemy.Column(String)
+    token = sqlalchemy.Column(String)
+    email = sqlalchemy.Column(String)
+    social = sqlalchemy.Column(String)
+    location = sqlalchemy.Column(String)
+    age = sqlalchemy.Column(Integer)
+    hobby = sqlalchemy.Column(String)
+    career = sqlalchemy.Column(String)
+    education = sqlalchemy.Column(String)
+    cigaretes = sqlalchemy.Column(String)
+    alcohol = sqlalchemy.Column(String)
+    music = sqlalchemy.Column(String)
+    films = sqlalchemy.Column(String)
+    videogames = sqlalchemy.Column(String)
+    serials = sqlalchemy.Column(String)
+    books = sqlalchemy.Column(String)
+    avatar = sqlalchemy.Column(String)
 
-class Chats(Base):
+class Chat(Base):
     __tablename__ = "chats"
-    
-    id1 = Column(Integer, ForeignKey("user.id"))
-    id2 = Column(Integer, ForeignKey("user.id"))
-    location = Column(String)
+
+    __table_args__ = (PrimaryKeyConstraint('id1', 'id2'),)
+
+    id1 = sqlalchemy.Column(Integer, ForeignKey("user.id"))
+    id2 = sqlalchemy.Column(Integer, ForeignKey("user.id"))
+    location = sqlalchemy.Column(String)
 
 class Shared(Base):
     __tablename__ = "shared"
 
-    owner_id = Column(Integer, ForeignKey("user.id"))
-    shared_id = Column(Integer, ForeignKey("user.id"))
-    field = Column(String)
+    __table_args__ = (PrimaryKeyConstraint('owner_id', 'shared_id'),)
+
+    owner_id = sqlalchemy.Column(Integer, ForeignKey("user.id"))
+    shared_id = sqlalchemy.Column(Integer, ForeignKey("user.id"))
+    field = sqlalchemy.Column(String)
