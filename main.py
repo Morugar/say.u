@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from handlers import router
+from Http.handlers import router
 
 def get_application() -> FastAPI:
     application = FastAPI()
