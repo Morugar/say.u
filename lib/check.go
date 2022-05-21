@@ -1,5 +1,9 @@
-package main
+package lib
 
-func main() {
+import "log"
 
+func Check(e error) {
+	if e != nil {
+		log.Fatal(e)
+	}
 }

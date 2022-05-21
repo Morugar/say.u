@@ -1,0 +1,67 @@
+{{ define "settings" }}
+
+{{ template "header" }}
+
+
+
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"> ТУТ БУДЕТ НИК </span><span class="text-black-50"></span><span> </span></div>
+        </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Настройки Профиля</h4>
+                </div>
+                <form action="/changeProfile">
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Имя</label><input name="name" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-6"><label class="labels">Никнейм</label><input name="login" type="text" class="form-control" value="" ></div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Адрес почты</label><input name="email" type="text" class="form-control" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Социальные сети (VK, Telegram и т.д.)</label><input name="social" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-12"><label class="labels">Место проживания</label><input name="location" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-12"><label class="labels">Возраст</label><input name="age" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-12"><label class="labels">Хобби</label><input name="hobby" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-12"><label class="labels">Карьера</label><input name="education" type="text" class="form-control"  value=""></div>
+                    <div class="col-md-12"><label class="labels">Обучение</label><input name="career" type="text" class="form-control" value=""></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <label class="labels">Отношение к сигаретам</label>
+                        <select name="cigaretes" class="form-control" placeholder="Выбор" value="Выбор">
+                            <option value="positive">Положительное</option>
+                            <option selected value="neutral">Нейтральное</option>
+                            <option value="negative">Негативное</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="labels">Отношение к алкоголю</label>
+                        <select name="alcohol" class="form-control" placeholder="Выбор" value="Выбор">
+                            <option value="positive">Положительное</option>
+                            <option selected value="neutral">Нейтральное</option>
+                            <option value="negative">Негативное</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"> <label class="labels">Ваша любимая музыка</label><input name="music" type="text" class="form-control" placeholder="Перечислять через запятую" value=""></div>
+                    <div class="col-md-12"> <label class="labels">Ваши любимые фильмы</label><input name="films" type="text" class="form-control" placeholder="Перечислять через запятую" value=""></div>
+                    <div class="col-md-12"> <label class="labels">Ваши любимые сериалы</label><input name="serials" type="text" class="form-control" placeholder="Перечислять через запятую" value=""></div>
+                    <div class="col-md-12"> <label class="labels">Ваши любимые видеоигры</label><input name="videogames" type="text" class="form-control" placeholder="Перечислять через запятую" value=""></div>
+                    <div class="col-md-12"> <label class="labels">Ваши любимые книги</label><input name="books" type="text" class="form-control" placeholder="Перечислять через запятую" value=""></div>
+                </div>
+                <div class="mt-5 text-center">
+                    <input type="submit" style="background-color: orange" class="btn btn-primary profile-button"  value="Сохранить"/>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ end }}
