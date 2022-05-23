@@ -1,7 +1,6 @@
 package lib
 
 import (
-	"fmt"
 	"net/http"
 	"text/template"
 )
@@ -34,9 +33,9 @@ func profileRouter(w http.ResponseWriter, r *http.Request) {
 	err = html.ExecuteTemplate(w, "profile", nil)
 	Check(err)
 
-	token, err := r.Cookie("token")
-	Check(err)
-	fmt.Println(token)
+	//token, err := r.Cookie("token")
+	//Check(err)
+	//fmt.Println(token)
 }
 
 func settingRouter(w http.ResponseWriter, r *http.Request) {
@@ -67,10 +66,17 @@ func chatRouter(w http.ResponseWriter, r *http.Request) {
 	Check(err)
 }
 
+func searchRouter(w http.ResponseWriter, r *http.Request) {
+	html, err := template.ParseFiles("patterns/search.html", "patterns/header.html")
+	Check(err)
+	err = html.ExecuteTemplate(w, "search", nil)
+	Check(err)
+}
+
 func Router() {
 	http.Handle("/index/", http.StripPrefix("/index/", http.FileServer(http.Dir("./patterns/index"))))
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./patterns/index/assets"))))
-	http.Handle("/chat/", http.StripPrefix("/chat/", http.FileServer(http.Dir("./patterns/chat"))))
+	//http.Handle("/chat/", http.StripPrefix("/chat/", http.FileServer(http.Dir("./patterns/chat"))))
 	http.HandleFunc("/", indexRouter)
 	http.HandleFunc("/login", loginRouter)
 	http.HandleFunc("/register", registerRouter)
@@ -79,4 +85,5 @@ func Router() {
 	http.HandleFunc("/apps", appsRouter)
 	http.HandleFunc("/faq", faqRouter)
 	http.HandleFunc("/chat", chatRouter)
+	http.HandleFunc("/search", searchRouter)
 }

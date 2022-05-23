@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="Go" enabled="true" />
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="core" level="application" />
+    <orderEntry type="library" name="9165eec4-fcd5-4c79-aa25-5d2d8d5eee4d" level="application" />
+    <orderEntry type="library" name="analytics" level="application" />
+    <orderEntry type="library" name="conversion_async" level="application" />
+  </component>
+</module>
